@@ -17,6 +17,43 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})  
   use 'mbbill/undotree'
   use 'tpope/vim-fugitive'
+  use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v3.x',
+	  requires = {
+		  --- Uncomment the two plugins below if you want to manage the language servers from neovim
+		  -- {'williamboman/mason.nvim'},
+		  -- {'williamboman/mason-lspconfig.nvim'},
+
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'L3MON4D3/LuaSnip'},
+	  }
+  }
+  use {
+    "williamboman/mason.nvim"
+  }
+  use "williamboman/mason-lspconfig.nvim"
+  use "wakatime/vim-wakatime"
+  use 'pixelneo/vim-python-docstring'
+  use {
+	  "gmr458/vscode_modern_theme.nvim",
+	  lazy = false,
+	  priority = 1000,
+	  config = function()
+		  require("vscode_modern").setup({
+			  cursorline = true,
+			  transparent_background = false,
+			  nvim_tree_darker = true,
+		  })
+		  vim.cmd.colorscheme("vscode_modern")
+	  end,
+  }
+  use "nvim-lua/plenary.nvim"
+  use "ThePrimeagen/harpoon"
 end)
 
 
