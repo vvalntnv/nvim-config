@@ -57,6 +57,12 @@ return require('packer').startup(function(use)
   use 'mfussenegger/nvim-dap' 
   use "rcarriga/nvim-dap-ui"
   use 'mfussenegger/nvim-dap-python'
+  use {
+	  'numToStr/Comment.nvim',
+	  config = function()
+		  require('Comment').setup()
+	  end
+  }
 end)
 
 
