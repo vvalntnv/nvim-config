@@ -42,14 +42,14 @@ return require('packer').startup(function(use)
   use {
 	  "gmr458/vscode_modern_theme.nvim",
 	  lazy = false,
-	  priority = 1000,
+	  -- priority = 1000,
 	  config = function()
 		  require("vscode_modern").setup({
 			  cursorline = true,
 			  transparent_background = false,
 			  nvim_tree_darker = true,
 		  })
-		  vim.cmd.colorscheme("vscode_modern")
+		  -- vim.cmd.colorscheme("vscode_modern")
 	  end,
   }
   use "nvim-lua/plenary.nvim"
@@ -63,6 +63,7 @@ return require('packer').startup(function(use)
 		  require('Comment').setup()
 	  end
   }
+  use { "catppuccin/nvim", as = "catppuccin" }
 end)
 
 

@@ -85,6 +85,11 @@ _G.packer_plugins = {
     path = "/var/www/wokbox2/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/var/www/wokbox2/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/var/www/wokbox2/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -186,7 +191,7 @@ _G.packer_plugins = {
     url = "https://github.com/wakatime/vim-wakatime"
   },
   ["vscode_modern_theme.nvim"] = {
-    config = { "\27LJ\2\n \1\0\0\3\0\a\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0009\0\6\0'\2\1\0B\0\2\1K\0\1\0\16colorscheme\bcmd\bvim\1\0\3\21nvim_tree_darker\2\27transparent_background\1\15cursorline\2\nsetup\18vscode_modern\frequire\0" },
+    config = { "\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\21nvim_tree_darker\2\27transparent_background\1\15cursorline\2\nsetup\18vscode_modern\frequire\0" },
     loaded = true,
     path = "/var/www/wokbox2/.local/share/nvim/site/pack/packer/start/vscode_modern_theme.nvim",
     url = "https://github.com/gmr458/vscode_modern_theme.nvim"
@@ -200,7 +205,7 @@ try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K
 time([[Config for Comment.nvim]], false)
 -- Config for: vscode_modern_theme.nvim
 time([[Config for vscode_modern_theme.nvim]], true)
-try_loadstring("\27LJ\2\n \1\0\0\3\0\a\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0009\0\6\0'\2\1\0B\0\2\1K\0\1\0\16colorscheme\bcmd\bvim\1\0\3\21nvim_tree_darker\2\27transparent_background\1\15cursorline\2\nsetup\18vscode_modern\frequire\0", "config", "vscode_modern_theme.nvim")
+try_loadstring("\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\21nvim_tree_darker\2\27transparent_background\1\15cursorline\2\nsetup\18vscode_modern\frequire\0", "config", "vscode_modern_theme.nvim")
 time([[Config for vscode_modern_theme.nvim]], false)
 
 _G._packer.inside_compile = false
