@@ -12,7 +12,6 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use 'AlexvZyl/nordic.nvim'
   use 'sainnhe/everforest'
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})  
   use 'mbbill/undotree'
@@ -64,6 +63,13 @@ return require('packer').startup(function(use)
 	  end
   }
   use { "catppuccin/nvim", as = "catppuccin" }
+  use 'neovim/nvim-lspconfig'
+  use 'simrat39/rust-tools.nvim'
+
+  -- Debugging
+  use 'nvim-lua/plenary.nvim'
+  use 'mfussenegger/nvim-dap'
+  use "rebelot/kanagawa.nvim"
 end)
 
 

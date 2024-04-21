@@ -29,10 +29,10 @@ vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 
 -- Harpoon --
 
-vim.keymap.set('n', "<C-a>", ':lua require("harpoon.mark").add_file()<CR>')
-vim.keymap.set('n', "<C-l>", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
-vim.keymap.set('n', "<C-e>", ':lua require("harpoon.ui").nav_next()<CR>')
-vim.keymap.set('n', "<C-q>", ':lua require("harpoon.ui").nav_prev()<CR>')
+vim.keymap.set('n', "<leader>a", ':lua require("harpoon.mark").add_file()<CR>')
+vim.keymap.set('n', "<leader>ll", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
+vim.keymap.set('n', "<leader>w]", ':lua require("harpoon.ui").nav_next()<CR>')
+vim.keymap.set('n', "<leader>w[", ':lua require("harpoon.ui").nav_prev()<CR>')
 
 
 -- nvim-dap --
@@ -75,3 +75,7 @@ vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
 vim.g.copilot_no_tab_map = true
 vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
 
+
+-- Rust Tools --
+vim.keymap.set('n', '<leader>h', ':require("rust-tools").inlay_hints.set()<CR>')
+vim.keymap.set('n', '<leader>hh', 'require("rust-tools").inlay_hints.unset()<CR>')
