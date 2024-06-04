@@ -21,6 +21,10 @@ vim.keymap.set('n', "<leader>bf", ":!black %<CR>")
 vim.keymap.set('n', "<leader>me", ":set mouse=a<CR>")
 vim.keymap.set('n', "<leader>md", ":set mouse=<CR>")
 vim.keymap.set('n', "<leader>nh", ":noh<CR>")
+vim.keymap.set('n', "del", "v$<bs>d")
+
+vim.keymap.set('n', "<leader>rw", "viws")
+vim.keymap.set('n', "<leader>dw", "viwd")
 
 
 -- LSP Server --
@@ -28,7 +32,6 @@ vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 
 
 -- Harpoon --
-
 vim.keymap.set('n', "<leader>a", ':lua require("harpoon.mark").add_file()<CR>')
 vim.keymap.set('n', "<leader>ll", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
 vim.keymap.set('n', "<leader>w]", ':lua require("harpoon.ui").nav_next()<CR>')
@@ -67,7 +70,6 @@ vim.keymap.set("n", "<leader>cd", function() require("dapui").close() end)
 
 
 -- Copilot --
-
 vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
 	expr = true,
 	replace_keycodes = false
@@ -79,3 +81,8 @@ vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
 -- Rust Tools --
 vim.keymap.set('n', '<leader>h', ':require("rust-tools").inlay_hints.set()<CR>')
 vim.keymap.set('n', '<leader>hh', 'require("rust-tools").inlay_hints.unset()<CR>')
+
+-- Fugitive --
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
+vim.keymap.set("n", "<leader>gc", ":Git commit<CR>");
+vim.keymap.set("n", "<leader>gp", ":Git push<CR>");
