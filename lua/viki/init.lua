@@ -3,4 +3,4 @@ require("viki.packer")
 require("viki.set")
 require("viki.theme")
 
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme gruvbox-material")

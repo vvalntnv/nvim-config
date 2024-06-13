@@ -100,6 +100,11 @@ _G.packer_plugins = {
     path = "/var/www/wokbox2/.local/share/nvim/site/pack/packer/start/everforest",
     url = "https://github.com/sainnhe/everforest"
   },
+  ["gruvbox-material"] = {
+    loaded = true,
+    path = "/var/www/wokbox2/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
+  },
   harpoon = {
     loaded = true,
     path = "/var/www/wokbox2/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -201,7 +206,7 @@ _G.packer_plugins = {
     url = "https://github.com/wakatime/vim-wakatime"
   },
   ["vscode_modern_theme.nvim"] = {
-    config = { "\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\27transparent_background\1\15cursorline\2\21nvim_tree_darker\2\nsetup\18vscode_modern\frequire\0" },
+    config = { "\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\21nvim_tree_darker\2\27transparent_background\1\15cursorline\2\nsetup\18vscode_modern\frequire\0" },
     loaded = true,
     path = "/var/www/wokbox2/.local/share/nvim/site/pack/packer/start/vscode_modern_theme.nvim",
     url = "https://github.com/gmr458/vscode_modern_theme.nvim"
@@ -211,7 +216,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: vscode_modern_theme.nvim
 time([[Config for vscode_modern_theme.nvim]], true)
-try_loadstring("\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\27transparent_background\1\15cursorline\2\21nvim_tree_darker\2\nsetup\18vscode_modern\frequire\0", "config", "vscode_modern_theme.nvim")
+try_loadstring("\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\21nvim_tree_darker\2\27transparent_background\1\15cursorline\2\nsetup\18vscode_modern\frequire\0", "config", "vscode_modern_theme.nvim")
 time([[Config for vscode_modern_theme.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
