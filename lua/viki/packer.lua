@@ -36,7 +36,6 @@ return require('packer').startup(function(use)
     "williamboman/mason.nvim"
   }
   use "williamboman/mason-lspconfig.nvim"
-  use "wakatime/vim-wakatime"
   use 'pixelneo/vim-python-docstring'
   use {
 	  "gmr458/vscode_modern_theme.nvim",
