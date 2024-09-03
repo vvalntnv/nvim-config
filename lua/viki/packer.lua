@@ -5,6 +5,11 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
+  
+  use {
+	  'folke/todo-comments.nvim',
+	  requires = { {'nvim-lua/plenary.nvim'} },  
+  }
   use 'wbthomason/packer.nvim'
 
   use 'sainnhe/gruvbox-material'
@@ -70,6 +75,7 @@ return require('packer').startup(function(use)
   use 'mfussenegger/nvim-dap'
   use "rebelot/kanagawa.nvim"
   use "nvim-neotest/nvim-nio" 
+  use "jose-elias-alvarez/null-ls.nvim"
 end)
 
 
