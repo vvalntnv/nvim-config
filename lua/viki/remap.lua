@@ -34,8 +34,8 @@ vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 -- Harpoon --
 vim.keymap.set('n', "<leader>a", ':lua require("harpoon.mark").add_file()<CR>')
 vim.keymap.set('n', "<leader>ll", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
-vim.keymap.set('n', "<leader>w]", ':lua require("harpoon.ui").nav_next()<CR>')
-vim.keymap.set('n', "<leader>w[", ':lua require("harpoon.ui").nav_prev()<CR>')
+-- vim.keymap.set('n', "<leader>w]", ':lua require("harpoon.ui").nav_next()<CR>')
+-- vim.keymap.set('n', "<leader>w[", ':lua require("harpoon.ui").nav_prev()<CR>')
 
 
 -- nvim-dap --
@@ -91,3 +91,28 @@ vim.keymap.set("n", "<leader>gp", ":Git push<CR>");
 -- TODO comments --
 
 vim.keymap.set("n", "<leader>todo", ":TodoTelescope<CR>")
+
+-- Terminal --
+vim.keymap.set("n", "<leader>ts", "<C-w>s <C-w>j :term<CR>")
+vim.keymap.set("n", "<leader>tt", ":term<CR>")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set("t", "<C-q>", "<C-\\><C-n><C-o>")
+
+
+-- TESTS --
+vim.keymap.set('n', '<leader>tp', ':TestSuite<CR>')
+vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
+vim.keymap.set('n', '<leader>tn', ':TestNearest<CR>')
+
+-- tabcheta deaznam --
+vim.keymap.set('n', '<leader>w]', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>w[', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader><Tab>', function()
+  local buffer_num = vim.fn.input("Go to buffer: ")
+  vim.cmd("BufferLineGoToBuffer " .. buffer_num)
+end, { noremap = true, silent = true })
+
+-- Quick tab switching
+vim.keymap.set('n', '<leader>t]', ':tabnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>t[', ':tabprevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { noremap = true, silent = true})

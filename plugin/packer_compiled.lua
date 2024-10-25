@@ -85,6 +85,11 @@ _G.packer_plugins = {
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/home/viktor/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   catppuccin = {
     loaded = true,
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/catppuccin",
@@ -119,6 +124,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/viktor/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -170,6 +180,12 @@ _G.packer_plugins = {
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-web-devicons"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/viktor/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -184,6 +200,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
+  },
+  ["scope.nvim"] = {
+    loaded = true,
+    path = "/home/viktor/.local/share/nvim/site/pack/packer/start/scope.nvim",
+    url = "https://github.com/tiagovla/scope.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -210,8 +231,18 @@ _G.packer_plugins = {
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/vim-python-docstring",
     url = "https://github.com/pixelneo/vim-python-docstring"
   },
+  ["vim-sneak"] = {
+    loaded = true,
+    path = "/home/viktor/.local/share/nvim/site/pack/packer/start/vim-sneak",
+    url = "https://github.com/justinmk/vim-sneak"
+  },
+  ["vim-test"] = {
+    loaded = true,
+    path = "/home/viktor/.local/share/nvim/site/pack/packer/start/vim-test",
+    url = "https://github.com/vim-test/vim-test"
+  },
   ["vscode_modern_theme.nvim"] = {
-    config = { "\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\15cursorline\2\21nvim_tree_darker\2\27transparent_background\1\nsetup\18vscode_modern\frequire\0" },
+    config = { "\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\21nvim_tree_darker\2\27transparent_background\1\15cursorline\2\nsetup\18vscode_modern\frequire\0" },
     loaded = true,
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/vscode_modern_theme.nvim",
     url = "https://github.com/gmr458/vscode_modern_theme.nvim"
@@ -219,14 +250,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vscode_modern_theme.nvim
-time([[Config for vscode_modern_theme.nvim]], true)
-try_loadstring("\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\15cursorline\2\21nvim_tree_darker\2\27transparent_background\1\nsetup\18vscode_modern\frequire\0", "config", "vscode_modern_theme.nvim")
-time([[Config for vscode_modern_theme.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: vscode_modern_theme.nvim
+time([[Config for vscode_modern_theme.nvim]], true)
+try_loadstring("\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\21nvim_tree_darker\2\27transparent_background\1\15cursorline\2\nsetup\18vscode_modern\frequire\0", "config", "vscode_modern_theme.nvim")
+time([[Config for vscode_modern_theme.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

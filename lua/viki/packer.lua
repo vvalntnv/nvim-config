@@ -8,8 +8,10 @@ return require('packer').startup(function(use)
   
   use {
 	  'folke/todo-comments.nvim',
-	  requires = { {'nvim-lua/plenary.nvim'} },  
+	  requires = { {'nvim-lua/plenary.nvim'} },
   }
+  use 'tiagovla/scope.nvim'
+  use 'justinmk/vim-sneak'
   use 'wbthomason/packer.nvim'
 
   use 'sainnhe/gruvbox-material'
@@ -17,6 +19,10 @@ return require('packer').startup(function(use)
 	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use {
+	  'nvim-lualine/lualine.nvim',
+	  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }	
   use 'sainnhe/everforest'
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})  
   use 'mbbill/undotree'
@@ -37,9 +43,11 @@ return require('packer').startup(function(use)
 		  {'L3MON4D3/LuaSnip'},
 	  }
   }
+  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
   use {
     "williamboman/mason.nvim"
   }
+  use 'vim-test/vim-test'
   use "williamboman/mason-lspconfig.nvim"
   use 'pixelneo/vim-python-docstring'
   use {
@@ -67,6 +75,7 @@ return require('packer').startup(function(use)
 	  end
   }
   use { "catppuccin/nvim", as = "catppuccin" }
+  use "rebelot/kanagawa.nvim"
   use 'neovim/nvim-lspconfig'
   use 'simrat39/rust-tools.nvim'
 
