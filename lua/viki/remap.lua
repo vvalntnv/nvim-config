@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.api.nvim_set_keymap("n", "<leader>s", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", "<C-w>")
-vim.keymap.set("n", "<leader>q", ":q<CR>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -105,12 +104,36 @@ vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
 vim.keymap.set('n', '<leader>tn', ':TestNearest<CR>')
 
 -- tabcheta deaznam --
+vim.keymap.set('n', '<leader>w{', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>w}', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>w]', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>w[', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+
+
 vim.keymap.set('n', '<leader><Tab>', function()
   local buffer_num = vim.fn.input("Go to buffer: ")
   vim.cmd("BufferLineGoToBuffer " .. buffer_num)
 end, { noremap = true, silent = true })
+
+
+vim.keymap.set('n', '<leader>q', function ()
+	local buffer_path = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+	local ok, harpoon = pcall(require, "harpoon.mark")
+
+	if not ok then
+		print("Harpoon not installed")
+		return
+	end
+
+	local index = harpoon.get_index_of(buffer_path)
+	print("index ", index)
+	if index then
+		print("Removed: ", index)
+		harpoon.rm_file(index)
+	end
+	vim.api.nvim_buf_delete(vim.api.nvim_get_current_buf(), { force = true })
+end)
+
 
 -- Quick tab switching
 vim.keymap.set('n', '<leader>t]', ':tabnext<CR>', { noremap = true, silent = true })

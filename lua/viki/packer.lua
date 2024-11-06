@@ -5,7 +5,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
-  
+
   use {
 	  'folke/todo-comments.nvim',
 	  requires = { {'nvim-lua/plenary.nvim'} },
@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
   use 'tiagovla/scope.nvim'
   use 'justinmk/vim-sneak'
   use 'wbthomason/packer.nvim'
+  use 'wakatime/vim-wakatime'
 
   use 'sainnhe/gruvbox-material'
   use {
@@ -22,7 +23,7 @@ return require('packer').startup(function(use)
   use {
 	  'nvim-lualine/lualine.nvim',
 	  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }	
+  }
   use 'sainnhe/everforest'
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})  
   use 'mbbill/undotree'
@@ -78,13 +79,13 @@ return require('packer').startup(function(use)
   use "rebelot/kanagawa.nvim"
   use 'neovim/nvim-lspconfig'
   use 'simrat39/rust-tools.nvim'
-
-  -- Debugging
   use 'nvim-lua/plenary.nvim'
   use 'mfussenegger/nvim-dap'
   use "rebelot/kanagawa.nvim"
-  use "nvim-neotest/nvim-nio" 
+  use "nvim-neotest/nvim-nio"
   use "jose-elias-alvarez/null-ls.nvim"
+  use "lewis6991/gitsigns.nvim"
+  use "lukas-reineke/indent-blankline.nvim"
 end)
 
 
