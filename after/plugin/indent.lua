@@ -4,6 +4,7 @@ require("ibl").setup({
 		smart_indent_cap = true
 	},
 	scope = {
-		show_start = false
+		show_start = false,
+		show_end = false
 	}
 })
