@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
   }
   use {
 	  'nvim-lualine/lualine.nvim',
-	  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	  requires = { 'nvim-tree/nvim-web-devicons' }
   }
   use 'sainnhe/everforest'
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})  
@@ -86,6 +86,10 @@ return require('packer').startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim"
   use "lewis6991/gitsigns.nvim"
   use "lukas-reineke/indent-blankline.nvim"
+  use "nvim-tree/nvim-tree.lua"
+  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+	  require("toggleterm").setup()
+  end}
 end)
 
 

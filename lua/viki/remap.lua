@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.api.nvim_set_keymap("n", "<leader>s", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", "<C-w>")
 
@@ -92,7 +92,7 @@ vim.keymap.set("n", "<leader>gp", ":Git push<CR>");
 vim.keymap.set("n", "<leader>todo", ":TodoTelescope<CR>")
 
 -- Terminal --
-vim.keymap.set("n", "<leader>ts", "<C-w>s <C-w>j :term<CR>")
+vim.keymap.set("n", "<leader>ts", [[:ToggleTerm<CR>]])
 vim.keymap.set("n", "<leader>tt", ":term<CR>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("t", "<C-q>", "<C-\\><C-n><C-o>")
@@ -139,3 +139,18 @@ end)
 vim.keymap.set('n', '<leader>t]', ':tabnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>t[', ':tabprevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { noremap = true, silent = true})
+
+-- nvim-tree
+vim.keymap.set('n', '<leader>e', function()
+  local api = require("nvim-tree.api")
+  if vim.bo.filetype == "NvimTree" then
+    vim.cmd("wincmd p") -- Unfocus from nvim-tree
+  else
+    if not api.tree.is_visible() then
+      api.tree.open() -- Open the tree if it's not visible
+    end
+    api.tree.focus() -- Focus on the tree
+  end
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>fe", [[:NvimTreeFindFile<CR>]])
