@@ -154,3 +154,7 @@ vim.keymap.set('n', '<leader>e', function()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>fe", [[:NvimTreeFindFile<CR>]])
+
+
+-- LazyGit
+vim.keymap.set('n', '<leader>lg', [[:LazyGit<CR>]])
