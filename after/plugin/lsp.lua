@@ -84,3 +84,14 @@ lsp_config.html.setup {
 lsp_config.tailwindcss.setup {
   filetypes = {"html", "css", "htmldjango"}
 }
+
+
+lsp_config.helm_ls.setup {
+  settings = {
+    ['helm-ls'] = {
+      yamlls = {
+        path = "yaml-language-server",
+      }
+    }
+  }
+}
