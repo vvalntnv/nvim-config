@@ -1,4 +1,3 @@
-require("viki.tree")
 require("viki.remap")
 require("viki.packer")
 require("viki.set")

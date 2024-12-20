@@ -1,4 +1,5 @@
 vim.opt.number = true
+vim.opt.guicursor = ""
 vim.opt.relativenumber = true
 
 vim.opt.scrolloff = 8
