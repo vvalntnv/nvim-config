@@ -87,7 +87,9 @@ return require('packer').startup(function(use)
   use "lewis6991/gitsigns.nvim"
   use "lukas-reineke/indent-blankline.nvim"
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-	  require("toggleterm").setup()
+	  require("toggleterm").setup{
+		direction = "vertical"
+	  }
   end}
   use 'folke/tokyonight.nvim'
   use({
@@ -112,6 +114,14 @@ return require('packer').startup(function(use)
 	  },
   }
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use 'L3MON4D3/LuaSnip'
+  use 'mfussenegger/nvim-lint'
+  use({
+    "stevearc/conform.nvim",
+    config = function()
+      require("conform").setup()
+    end,
+  })
 end)
 
 

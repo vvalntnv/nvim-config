@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
--- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
-vim.api.nvim_set_keymap("n", "<leader>s", ":w<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", "<C-w>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -33,8 +33,8 @@ vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 -- Harpoon --
 vim.keymap.set('n', "<leader>a", ':lua require("harpoon.mark").add_file()<CR>')
 vim.keymap.set('n', "<leader>ll", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
--- vim.keymap.set('n', "<leader>w]", ':lua require("harpoon.ui").nav_next()<CR>')
--- vim.keymap.set('n', "<leader>w[", ':lua require("harpoon.ui").nav_prev()<CR>')
+vim.keymap.set('n', "<leader>w]", ':lua require("harpoon.ui").nav_next()<CR>')
+vim.keymap.set('n', "<leader>w[", ':lua require("harpoon.ui").nav_prev()<CR>')
 
 
 -- nvim-dap --
@@ -106,8 +106,8 @@ vim.keymap.set('n', '<leader>tn', ':TestNearest<CR>')
 -- tabcheta deaznam --
 vim.keymap.set('n', '<leader>w{', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>w}', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>w]', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>w[', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-l>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-h>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 
 
 vim.keymap.set('n', '<leader><Tab>', function()
@@ -141,20 +141,31 @@ vim.keymap.set('n', '<leader>t[', ':tabprevious<CR>', { noremap = true, silent =
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { noremap = true, silent = true})
 
 -- nvim-tree
-vim.keymap.set('n', '<leader>e', function()
-  local api = require("nvim-tree.api")
-  if vim.bo.filetype == "NvimTree" then
-    vim.cmd("wincmd p") -- Unfocus from nvim-tree
-  else
-    if not api.tree.is_visible() then
-      api.tree.open() -- Open the tree if it's not visible
-    end
-    api.tree.focus() -- Focus on the tree
-  end
-end, { noremap = true, silent = true })
-
-vim.keymap.set("n", "<leader>fe", [[:NvimTreeFindFile<CR>]])
+-- vim.keymap.set('n', '<leader>e', function()
+--   local api = require("nvim-tree.api")
+--   if vim.bo.filetype == "NvimTree" then
+--     vim.cmd("wincmd p") -- Unfocus from nvim-tree
+--   else
+--     if not api.tree.is_visible() then
+--       api.tree.open() -- Open the tree if it's not visible
+--     end
+--     api.tree.focus() -- Focus on the tree
+--   end
+-- end, { noremap = true, silent = true })
+--
+-- vim.keymap.set("n", "<leader>fe", [[:NvimTreeFindFile<CR>]])
 
 
 -- LazyGit
 vim.keymap.set('n', '<leader>lg', [[:LazyGit<CR>]])
+
+-- Formatters 
+vim.keymap.set("n", "<C-f>", function()
+  require("conform").format({ async = true })
+end, { desc = "Format with Conform", silent = true })
+
+-- Linting
+vim.keymap.set("n", "<leader>lf", function()
+  require("lint").try_lint()
+end, { desc = "Run Linter", silent = true })
+
