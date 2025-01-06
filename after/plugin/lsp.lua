@@ -22,7 +22,16 @@ local lsp_config = require("lspconfig")
 cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = cmp.mapping.confirm({select = true}),
+	['<C-J>'] = cmp.mapping.select_next_item(),
+	['<C-K>'] = cmp.mapping.select_prev_item()
   })
+})
+
+cmp.setup.filetype({ "sql" }, {
+	sources = {
+		{ name = "vim-dadbod-completion" },
+		{ name = "buffer" }
+	}
 })
 
 vim.diagnostic.config({

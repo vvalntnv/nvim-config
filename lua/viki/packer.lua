@@ -1,4 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require('plugins')` from your init.vimlu
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -44,7 +44,6 @@ return require('packer').startup(function(use)
 		  {'L3MON4D3/LuaSnip'},
 	  }
   }
-  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
   use {
     "williamboman/mason.nvim"
   }
@@ -122,6 +121,10 @@ return require('packer').startup(function(use)
       require("conform").setup()
     end,
   })
+  use 'rose-pine/neovim'
+  use 'tpope/vim-dadbod'
+  use 'kristijanhusak/vim-dadbod-completion'
+  use 'kristijanhusak/vim-dadbod-ui'
 end)
 
 

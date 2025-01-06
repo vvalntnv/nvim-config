@@ -2,7 +2,7 @@ require("viki.remap")
 require("viki.packer")
 require("viki.set")
 require("viki.theme")
-vim.cmd("colorscheme tokyonight-night")
+vim.cmd("colorscheme rose-pine-main")
 
 vim.filetype.add({
   extension = {

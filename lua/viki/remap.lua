@@ -33,8 +33,8 @@ vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 -- Harpoon --
 vim.keymap.set('n', "<leader>a", ':lua require("harpoon.mark").add_file()<CR>')
 vim.keymap.set('n', "<leader>ll", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
-vim.keymap.set('n', "<leader>w]", ':lua require("harpoon.ui").nav_next()<CR>')
-vim.keymap.set('n', "<leader>w[", ':lua require("harpoon.ui").nav_prev()<CR>')
+vim.keymap.set('n', "<S-l>", ':lua require("harpoon.ui").nav_next()<CR>')
+vim.keymap.set('n', "<S-h>", ':lua require("harpoon.ui").nav_prev()<CR>')
 
 
 -- nvim-dap --
@@ -69,12 +69,12 @@ vim.keymap.set("n", "<leader>cd", function() require("dapui").close() end)
 
 
 -- Copilot --
-vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
-	expr = true,
-	replace_keycodes = false
-})
-vim.g.copilot_no_tab_map = true
-vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
+-- vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+-- 	expr = true,
+-- 	replace_keycodes = false
+-- })
+-- vim.g.copilot_no_tab_map = true
+-- vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
 
 
 -- Rust Tools --
@@ -104,35 +104,16 @@ vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
 vim.keymap.set('n', '<leader>tn', ':TestNearest<CR>')
 
 -- tabcheta deaznam --
-vim.keymap.set('n', '<leader>w{', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>w}', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<S-l>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<S-h>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>w{', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>w}', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<S-l>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<S-h>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 
 
 vim.keymap.set('n', '<leader><Tab>', function()
   local buffer_num = vim.fn.input("Go to buffer: ")
   vim.cmd("BufferLineGoToBuffer " .. buffer_num)
 end, { noremap = true, silent = true })
-
-
-vim.keymap.set('n', '<leader>q', function ()
-	local buffer_path = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-	local ok, harpoon = pcall(require, "harpoon.mark")
-
-	if not ok then
-		print("Harpoon not installed")
-		return
-	end
-
-	local index = harpoon.get_index_of(buffer_path)
-	print("index ", index)
-	if index then
-		print("Removed: ", index)
-		harpoon.rm_file(index)
-	end
-	vim.api.nvim_buf_delete(vim.api.nvim_get_current_buf(), { force = true })
-end)
 
 
 -- Quick tab switching
@@ -169,3 +150,6 @@ vim.keymap.set("n", "<leader>lf", function()
   require("lint").try_lint()
 end, { desc = "Run Linter", silent = true })
 
+
+-- Restart LSP
+vim.keymap.set("n", "<leader>lr", [[:LspRestart<CR>]])
