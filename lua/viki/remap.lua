@@ -103,7 +103,6 @@ vim.keymap.set('n', '<leader>tp', ':TestSuite<CR>')
 vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
 vim.keymap.set('n', '<leader>tn', ':TestNearest<CR>')
 
--- tabcheta deaznam --
 -- vim.keymap.set('n', '<leader>w{', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
 -- vim.keymap.set('n', '<leader>w}', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
 -- vim.keymap.set('n', '<S-l>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
@@ -116,10 +115,11 @@ vim.keymap.set('n', '<leader><Tab>', function()
 end, { noremap = true, silent = true })
 
 
--- Quick tab switching
-vim.keymap.set('n', '<leader>t]', ':tabnext<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>t[', ':tabprevious<CR>', { noremap = true, silent = true })
+-- tabcheta deaznam --
+vim.keymap.set('n', '<C-l>', ':tabnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-h>', ':tabprevious<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { noremap = true, silent = true})
+vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { noremap = true, silent = true})
 
 -- nvim-tree
 -- vim.keymap.set('n', '<leader>e', function()
@@ -153,3 +153,7 @@ end, { desc = "Run Linter", silent = true })
 
 -- Restart LSP
 vim.keymap.set("n", "<leader>lr", [[:LspRestart<CR>]])
+
+-- No-neck pain
+vim.keymap.set("n", "<leader>z", [[:NoNeckPain<CR>]])
+vim.keymap.set("n", "<C-n>", [[:NoNeckPainScratchPad<CR>]])
