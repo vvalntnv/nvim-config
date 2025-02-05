@@ -1,5 +1,16 @@
 local M = {}
 
+--- Creates the path to the dir, without creating the directory
+--- @param custom_name string | nil: The custom name of the path if not specified, defaults to notes
+local function get_location_of_dir(custom_name)
+	local notes_name = custom_name or "notes"
+	local cwd = vim.fn.getcwd()
+	local dir = vim.fs.joinpath(cwd, notes_name)
+
+	return dir
+end
+
+
 --- Ensures that the directory exists
 --- @param dir string: The path of the directory to be created
 local function ensure_directory_exists(dir)
@@ -15,17 +26,16 @@ end
 --- @param custom_name string | nil: A custom name for the directory if nothing is specified, then the dir's default name will be `notes`
 --- @return string: The directory created
 local function create_local_notes_directory(custom_name)
-	local notes_name = custom_name or "notes"
-
-	local cwd = vim.fn.getcwd()
-	local dir = vim.fs.joinpath(cwd, notes_name)
+	local dir = get_location_of_dir(custom_name)
 
 	ensure_directory_exists(dir)
 
 	return dir
 end
 
+
 M.ensure_directory_exists = ensure_directory_exists
 M.create_local_notes_directory = create_local_notes_directory
+M.get_location_of_dir = get_location_of_dir
 
 return M

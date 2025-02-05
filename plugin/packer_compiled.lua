@@ -171,6 +171,11 @@ _G.packer_plugins = {
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/neovim",
     url = "https://github.com/rose-pine/neovim"
   },
+  ["no-neck-pain.nvim"] = {
+    loaded = true,
+    path = "/home/viktor/.local/share/nvim/site/pack/packer/start/no-neck-pain.nvim",
+    url = "https://github.com/shortcuts/no-neck-pain.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -252,6 +257,11 @@ _G.packer_plugins = {
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/startup.nvim",
     url = "https://github.com/startup-nvim/startup.nvim"
   },
+  ["tailwind-tools.nvim"] = {
+    loaded = true,
+    path = "/home/viktor/.local/share/nvim/site/pack/packer/start/tailwind-tools.nvim",
+    url = "https://github.com/luckasRanarison/tailwind-tools.nvim"
+  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
@@ -324,7 +334,7 @@ _G.packer_plugins = {
     url = "https://github.com/wakatime/vim-wakatime"
   },
   ["vscode_modern_theme.nvim"] = {
-    config = { "\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\15cursorline\2\21nvim_tree_darker\2\27transparent_background\1\nsetup\18vscode_modern\frequire\0" },
+    config = { "\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\27transparent_background\1\15cursorline\2\21nvim_tree_darker\2\nsetup\18vscode_modern\frequire\0" },
     loaded = true,
     path = "/home/viktor/.local/share/nvim/site/pack/packer/start/vscode_modern_theme.nvim",
     url = "https://github.com/gmr458/vscode_modern_theme.nvim"
@@ -332,25 +342,25 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: conform.nvim
-time([[Config for conform.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fconform\frequire\0", "config", "conform.nvim")
-time([[Config for conform.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\nR\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\14direction\rvertical\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
 -- Config for: startup.nvim
 time([[Config for startup.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fstartup\frequire\0", "config", "startup.nvim")
 time([[Config for startup.nvim]], false)
+-- Config for: conform.nvim
+time([[Config for conform.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fconform\frequire\0", "config", "conform.nvim")
+time([[Config for conform.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\nR\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\14direction\rvertical\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
 -- Config for: vscode_modern_theme.nvim
 time([[Config for vscode_modern_theme.nvim]], true)
-try_loadstring("\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\15cursorline\2\21nvim_tree_darker\2\27transparent_background\1\nsetup\18vscode_modern\frequire\0", "config", "vscode_modern_theme.nvim")
+try_loadstring("\27LJ\2\nx\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\3\27transparent_background\1\15cursorline\2\21nvim_tree_darker\2\nsetup\18vscode_modern\frequire\0", "config", "vscode_modern_theme.nvim")
 time([[Config for vscode_modern_theme.nvim]], false)
 
 _G._packer.inside_compile = false

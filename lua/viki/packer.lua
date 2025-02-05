@@ -126,6 +126,14 @@ return require('packer').startup(function(use)
   use 'kristijanhusak/vim-dadbod-completion'
   use 'kristijanhusak/vim-dadbod-ui'
   use {"shortcuts/no-neck-pain.nvim", tag = "*" }
+  use {
+	"luckasRanarison/tailwind-tools.nvim",
+	requires = {
+		"nvim-treesitter/nvim-treesitter",
+		"nvim-telescope/telescope.nvim", -- optional
+		"neovim/nvim-lspconfig", -- optional
+	}
+  }
 end)
 
 

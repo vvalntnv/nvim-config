@@ -90,9 +90,34 @@ lsp_config.html.setup {
   filetypes = { 'html', 'htmldjango' }, -- Add htmldjango to filetypes
 }
 
-lsp_config.tailwindcss.setup {
-  filetypes = {"html", "css", "htmldjango"}
-}
+-- lsp_config.tailwindcss.setup {
+-- 	cmd = { 'tailwindcss-language-server', '--stdio' },
+-- 	filetypes = { 'html', 'css', 'javascript', 'htmldjango' },
+-- 	init_options = {
+-- 		userLanguages = {
+-- 			htmldjango = 'html',
+-- 		},
+-- 	},
+-- 	settings = {
+-- 		tailwindCSS = {
+-- 			experimental = {
+-- 				classRegex = {
+-- 					'class="([^"]*)"',
+-- 					"class='([^']*)'",
+-- 					'className="([^"]*)"',
+-- 					"className='([^']*)'",
+-- 					'class:\\s*"([^"]*)"',
+-- 					"class:\\s*'([^']*)'",
+-- 					'classList\\.add\\(([^)]+)\\)',
+-- 					'classnames\\(([^)]+)\\)',
+-- 					'clsx\\(([^)]+)\\)',
+-- 					'{%\\s*class\\s*["\']([^"\']*)["\']\\s*%}',
+-- 				},
+-- 			},
+-- 		}
+-- 	}
+-- }
+
 
 
 lsp_config.helm_ls.setup {
