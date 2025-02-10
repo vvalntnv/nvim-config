@@ -3,6 +3,7 @@ require("viki.packer")
 require("viki.set")
 require("viki.theme")
 require("viki.commands")
+local colors = require("utils.colors")
 vim.cmd("colorscheme rose-pine-main")
 
 vim.filetype.add({

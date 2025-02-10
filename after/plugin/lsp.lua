@@ -45,6 +45,7 @@ vim.diagnostic.config({
 require('mason').setup()
 require('mason-lspconfig').setup({
     ensure_installed = {"pyright", "rust_analyzer", "ts_ls"}, -- Include Pyright here
+
     handlers = {
 		lsp_zero.default_setup,
     },
@@ -54,7 +55,7 @@ lsp_config.pyright.setup {
 	settings = {
 		python = {
 			analysis = {
-				typeCheckingMode = "on"
+				typeCheckingMode = "off"
 			}
 		}
 	}
