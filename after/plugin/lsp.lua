@@ -17,6 +17,7 @@ lsp_zero.extend_lspconfig({
 local cmp = require("cmp")
 local cmp_action = lsp_zero.cmp_action()
 local lsp_config = require("lspconfig")
+local util = lsp_config.util
 
 
 cmp.setup({
@@ -93,7 +94,11 @@ lsp_config.html.setup {
 
 -- lsp_config.tailwindcss.setup {
 -- 	cmd = { 'tailwindcss-language-server', '--stdio' },
--- 	filetypes = { 'html', 'css', 'javascript', 'htmldjango' },
+-- 	filetypes = { 'html', 'css', 'javascript', 'htmldjango', 'typescriptreact' },
+-- 	root_dir = function(fname)
+-- 		local root = lsp_config.util.root_pattern('tailwind.config.js', 'package.json', '.git')(fname)
+-- 		vim.notify("TailwindCSS LSP Root Directory: " .. (root or "Not found"), vim.log.levels.INFO)		return root
+-- 	end,
 -- 	init_options = {
 -- 		userLanguages = {
 -- 			htmldjango = 'html',
@@ -109,14 +114,14 @@ lsp_config.html.setup {
 -- 					"className='([^']*)'",
 -- 					'class:\\s*"([^"]*)"',
 -- 					"class:\\s*'([^']*)'",
--- 					'classList\\.add\\(([^)]+)\\)',
--- 					'classnames\\(([^)]+)\\)',
--- 					'clsx\\(([^)]+)\\)',
--- 					'{%\\s*class\\s*["\']([^"\']*)["\']\\s*%}',
+-- 					'classList%.add%(([^)]+)%)',
+-- 					'classnames%(([^)]+)%)',
+-- 					'clsx%(([^)]+)%)',
+-- 					'{%%\\s*class\\s*["\']([^"\']*)["\']\\s*%%}',
 -- 				},
 -- 			},
--- 		}
--- 	}
+-- 		},
+-- 	},
 -- }
 
 

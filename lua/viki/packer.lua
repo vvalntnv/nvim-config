@@ -78,8 +78,6 @@ return require('packer').startup(function(use)
 	use "rebelot/kanagawa.nvim"
 	use 'neovim/nvim-lspconfig'
 	use 'simrat39/rust-tools.nvim'
-	use 'mfussenegger/nvim-dap'
-	use "rebelot/kanagawa.nvim"
 	use "nvim-neotest/nvim-nio"
 	use "jose-elias-alvarez/null-ls.nvim"
 	use "lewis6991/gitsigns.nvim"
@@ -112,7 +110,6 @@ return require('packer').startup(function(use)
 		},
 	}
 	use 'JoosepAlviste/nvim-ts-context-commentstring'
-	use 'L3MON4D3/LuaSnip'
 	use 'mfussenegger/nvim-lint'
 	use({
 		"stevearc/conform.nvim",
