@@ -4,7 +4,7 @@ require("viki.set")
 require("viki.theme")
 require("viki.commands")
 local colors = require("utils.colors")
-vim.cmd("colorscheme rose-pine-main")
+vim.cmd("colorscheme catppuccin-macchiato")
 
 vim.filetype.add({
   extension = {
