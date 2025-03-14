@@ -1,3 +1,5 @@
+Snacks = require("snacks")
+
 require("remaps")
 
 vim.opt.number = true
