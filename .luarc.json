@@ -1,0 +1,8 @@
+{
+    "diagnostics.globals": [
+        "fallback"
+    ],
+    "diagnostics.disable": [
+        "missing-fields"
+    ]
+}

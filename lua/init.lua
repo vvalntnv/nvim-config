@@ -1,6 +1,8 @@
 Snacks = require("snacks")
+vim.g.moonflyNormalFloat = true
 
 require("remaps")
+vim.cmd([[colorscheme moonfly]])
 
 vim.opt.number = true
 vim.opt.guicursor = ""
@@ -17,12 +19,14 @@ vim.opt.smartindent = true
 
 -- React (JSX/TSX) specific settings
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "javascriptreact", "typescriptreact", "css", "typescript", "javascript" },
-    callback = function()
-        vim.opt_local.expandtab = true
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.autoindent = true
-        vim.opt_local.smartindent = true
-    end,
+	pattern = { "javascriptreact", "typescriptreact", "css", "typescript", "javascript" },
+	callback = function()
+		vim.opt_local.expandtab = true
+		vim.opt_local.tabstop = 2
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.autoindent = true
+		vim.opt_local.smartindent = true
+	end,
 })
+
+require("after")
