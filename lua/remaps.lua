@@ -18,19 +18,22 @@ vim.keymap.set("n", "<leader>Y", '"+Y')
 vim.keymap.set("n", "<leader>z", [[:Lazy<CR>]], { desc = "Open Lazy" })
 vim.keymap.set("n", "<leader>nh", snacks.notifier.show_history)
 
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+
+--
 -- Nvim Tree --
-vim.keymap.set("n", "<leader>e", [[:NvimTreeToggle<CR>]], { desc = "Open netrw file explorer" })
-vim.keymap.set("n", "<C-h>", [[:NvimTreeFocus<CR>]], { desc = "Focus on the nvim tree" })
-vim.keymap.set("n", "<leader>tr", [[:NvimTreeRefresh<CR>]], { desc = "Focus on the nvim tree" })
-vim.keymap.set("n", "<leader>ft", function()
-	local api = require("nvim-tree.api")
-
-	local is_focus_on_nvim_tree = api.tree.is_tree_buf()
-
-	if not is_focus_on_nvim_tree then
-		api.tree.find_file({ open = true, focus = true })
-	end
-end, { desc = "Open the current file in nvim-tree (if not focused)" })
+-- vim.keymap.set("n", "<leader>e", [[:NvimTreeToggle<CR>]], { desc = "Open netrw file explorer" })
+-- vim.keymap.set("n", "<C-h>", [[:NvimTreeFocus<CR>]], { desc = "Focus on the nvim tree" })
+-- vim.keymap.set("n", "<leader>tr", [[:NvimTreeRefresh<CR>]], { desc = "Focus on the nvim tree" })
+-- vim.keymap.set("n", "<leader>ft", function()
+-- 	local api = require("nvim-tree.api")
+--
+-- 	local is_focus_on_nvim_tree = api.tree.is_tree_buf()
+--
+-- 	if not is_focus_on_nvim_tree then
+-- 		api.tree.find_file({ open = true, focus = true })
+-- 	end
+-- end, { desc = "Open the current file in nvim-tree (if not focused)" })
 
 -- Code Actions --
 vim.keymap.set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
