@@ -50,10 +50,10 @@ end, { silent = true, noremap = true, desc = "toggle signature" })
 -- Mason
 vim.keymap.set("n", "<leader>ms", [[:Mason<CR>]], { desc = "Open Mason" })
 
-vim.keymap.set("n", "<leader>mm", function()
-	local copanel = require("copilot.panel")
-	copanel.open({ position = "bottom", ratio = 0.4 })
-end, { desc = "Make Mason" })
+-- vim.keymap.set("n", "<leader>mm", function()
+-- 	local copanel = require("copilot.panel")
+-- 	copanel.open({ position = "bottom", ratio = 0.4 })
+-- end, { desc = "Make Mason" })
 
 
 -- Harpoon --

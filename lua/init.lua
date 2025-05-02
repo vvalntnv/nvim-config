@@ -2,15 +2,17 @@ Snacks = require("snacks")
 vim.g.moonflyNormalFloat = true
 
 require("remaps")
-vim.cmd([[colorscheme moonfly]])
+vim.cmd([[colorscheme tokyonight-night]])
 
 vim.opt.number = true
 vim.opt.guicursor = ""
 vim.opt.relativenumber = true
+vim.opt.laststatus = 3
 
 vim.opt.scrolloff = 8
 
 vim.opt.tabstop = 4
+vim.opt.cursorline = true
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.expandtab = true
@@ -27,6 +29,14 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.autoindent = true
 		vim.opt_local.smartindent = true
 	end,
+})
+
+
+-- Linter auto linting
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	callback = function()
+		require('lint').try_lint()
+	end
 })
 
 require("after")

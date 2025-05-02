@@ -15,7 +15,7 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			local copilot = require("copilot")
+			-- local copilot = require("copilot")
 			cmp.setup({
 				sources = {
 					{ name = "nvim_lsp" },
