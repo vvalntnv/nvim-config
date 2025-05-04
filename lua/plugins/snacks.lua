@@ -1,34 +1,90 @@
 return {
-  "folke/snacks.nvim",
-  priority = 1000,
-  lazy = false,
-  ---@type snacks.Config
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    bigfile = { enabled = true },
-    dashboard = { enabled = true },
-    explorer = { enabled = false },
-    indent = { enabled = true },
-    input = { enabled = true },
-    picker = { enabled = true },
-    notifier = { enabled = true },
-    quickfile = { enabled = true },
-    scope = { enabled = true },
-    scroll = { enabled = false },
-    statuscolumn = { enabled = false },
-    words = { enabled = true },
-
-  },
-  keys = {
-	  -- Git --
-	  { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
-	  { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
-	  { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
-	  { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-	  { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
-	  { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
-	  { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
-  }
+	"folke/snacks.nvim",
+	priority = 1000,
+	lazy = false,
+	---@type snacks.Config
+	opts = {
+		-- your configuration comes here
+		-- or leave it empty to use the default settings
+		-- refer to the configuration section below
+		scratch = { enabled = true },
+		bigfile = { enabled = true },
+		dashboard = { enabled = true },
+		explorer = { enabled = false },
+		indent = { enabled = true },
+		input = { enabled = true },
+		picker = { enabled = true },
+		notifier = { enabled = true },
+		quickfile = { enabled = true },
+		scope = { enabled = false },
+		scroll = { enabled = false },
+		statuscolumn = { enabled = false },
+		words = { enabled = true },
+	},
+	keys = {
+		-- Git --
+		{
+			"<leader>gb",
+			function()
+				Snacks.picker.git_branches()
+			end,
+			desc = "Git Branches",
+		},
+		{
+			"<leader>gl",
+			function()
+				Snacks.picker.git_log()
+			end,
+			desc = "Git Log",
+		},
+		{
+			"<leader>gL",
+			function()
+				Snacks.picker.git_log_line()
+			end,
+			desc = "Git Log Line",
+		},
+		{
+			"<leader>gs",
+			function()
+				Snacks.picker.git_status()
+			end,
+			desc = "Git Status",
+		},
+		{
+			"<leader>gS",
+			function()
+				Snacks.picker.git_stash()
+			end,
+			desc = "Git Stash",
+		},
+		{
+			"<leader>gd",
+			function()
+				Snacks.picker.git_diff()
+			end,
+			desc = "Git Diff (Hunks)",
+		},
+		{
+			"<leader>gf",
+			function()
+				Snacks.picker.git_log_file()
+			end,
+			desc = "Git Log File",
+		},
+		{
+			"<leader>.",
+			function()
+				Snacks.scratch()
+			end,
+			desc = "Toggle Scratch Buffer",
+		},
+		{
+			"<leader>S",
+			function()
+				Snacks.scratch.select()
+			end,
+			desc = "Select Scratch Buffer",
+		},
+	},
 }

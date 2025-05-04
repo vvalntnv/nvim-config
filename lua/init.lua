@@ -2,7 +2,7 @@ Snacks = require("snacks")
 vim.g.moonflyNormalFloat = true
 
 require("remaps")
-vim.cmd([[colorscheme tokyonight-night]])
+vim.cmd([[colorscheme zenbones]])
 
 vim.opt.number = true
 vim.opt.guicursor = ""
