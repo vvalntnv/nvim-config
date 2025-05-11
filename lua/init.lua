@@ -2,6 +2,7 @@ Snacks = require("snacks")
 vim.g.moonflyNormalFloat = true
 
 require("remaps")
+vim.cmd([[set termguicolors]])
 vim.cmd([[colorscheme zenbones]])
 
 vim.opt.number = true
@@ -21,7 +22,7 @@ vim.opt.smartindent = true
 
 -- React (JSX/TSX) specific settings
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "javascriptreact", "typescriptreact", "css", "typescript", "javascript" },
+	pattern = { "javascriptreact", "typescriptreact", "css", "typescript", "javascript", "c", "cpp" },
 	callback = function()
 		vim.opt_local.expandtab = true
 		vim.opt_local.tabstop = 2
@@ -31,12 +32,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-
 -- Linter auto linting
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	callback = function()
-		require('lint').try_lint()
-	end
+		require("lint").try_lint()
+	end,
 })
 
 require("after")
