@@ -61,3 +61,5 @@ vim.keymap.set('n', "<C-a>", ':lua require("harpoon.mark").add_file()<CR>')
 vim.keymap.set('n', "<C-l>", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
 vim.keymap.set('n', "<S-l>", ':lua require("harpoon.ui").nav_next()<CR>')
 vim.keymap.set('n', "<S-h>", ':lua require("harpoon.ui").nav_prev()<CR>')
+
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)

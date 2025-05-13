@@ -22,10 +22,12 @@ return {
 			lua = { "stylua" },
 			python = { "isort", "black" },
 			json = { "jq" },
+			php = { "php_cs_fixer" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+			c = { "clang-format" }
 		},
 		-- Set default options
 		default_format_opts = {
@@ -37,6 +39,18 @@ return {
 		formatters = {
 			shfmt = {
 				prepend_args = { "-i", "2" },
+			},
+			php = {
+				command = "php-cs-fixer",
+				args = {
+					"fix",
+					"--quiet",
+					"--using-cache=no",
+					"--config=" .. vim.fn.expand("~/.php-cs-fixer.dist.php"),
+					"--no-interaction",
+					"%",
+				},
+				stdin = false,
 			},
 		},
 	},
