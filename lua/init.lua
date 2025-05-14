@@ -3,7 +3,7 @@ vim.g.moonflyNormalFloat = true
 
 require("remaps")
 vim.cmd([[set termguicolors]])
-vim.cmd([[colorscheme zenbones]])
+vim.cmd([[colorscheme moonfly]])
 
 vim.opt.number = true
 vim.opt.guicursor = ""
@@ -19,6 +19,7 @@ vim.opt.shiftwidth = 4
 vim.expandtab = true
 
 vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 -- React (JSX/TSX) specific settings
 vim.api.nvim_create_autocmd("FileType", {

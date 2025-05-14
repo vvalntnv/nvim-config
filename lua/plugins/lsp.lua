@@ -71,6 +71,10 @@ return {
 			vim.opt.signcolumn = "yes"
 		end,
 		config = function()
+			-- Intelliphense setup
+			require('lspconfig').intelephense.setup{}
+
+
 			local lsp_defaults = require("lspconfig").util.default_config
 
 			-- Add cmp_nvim_lsp capabilities settings to lspconfig
