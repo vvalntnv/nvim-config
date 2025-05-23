@@ -21,6 +21,23 @@ return {
 		vim.keymap.set("n", "<leader>fw", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end)
+		vim.keymap.set("v", "gs", function()
+			local utils = require("utils.visual_mode")
+			local selected_text = utils.get_selected_text()
+
+			local ttype = type(selected_text);
+
+			local search_text
+
+			if ttype == 'table' then
+				search_text = selected_text[0]
+				return;
+			else
+				search_text = selected_text
+			end
+
+			builtin.grep_string({ search = search_text });
+		end)
 	end,
 
 	config = function()

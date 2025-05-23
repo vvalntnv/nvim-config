@@ -19,7 +19,8 @@ vim.keymap.set("n", "<leader>z", [[:Lazy<CR>]], { desc = "Open Lazy" })
 vim.keymap.set("n", "<leader>nh", snacks.notifier.show_history)
 
 -- Neotree --
-vim.keymap.set("n", "<leader>e", [[:Neotree action=focus source=filesystem toggle<CR>]])
+vim.keymap.set("n", "<leader>e", [[:Neotree action=focus source=filesystem reveal<CR>]])
+vim.keymap.set("n", "<C-x>", [[:Neotree action=show toggle reveal<CR>]])
 vim.keymap.set("n", "<leader>b", [[:Neotree action=focus source=buffers position=float toggle<CR>]])
 vim.keymap.set("n", "<leader>gh", [[:Neotree action=focus source=git_status position=float toggle<CR>]])
 

@@ -3,10 +3,10 @@ vim.g.moonflyNormalFloat = true
 
 require("remaps")
 vim.cmd([[set termguicolors]])
-vim.cmd([[colorscheme moonfly]])
+vim.cmd([[colorscheme onedark]])
 
 vim.opt.number = true
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 vim.opt.relativenumber = true
 vim.opt.laststatus = 3
 
