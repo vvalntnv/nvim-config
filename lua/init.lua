@@ -21,6 +21,12 @@ vim.expandtab = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 
+vim.filetype.add({
+	extension = {
+		twig = "twig"
+	}
+})
+
 -- React (JSX/TSX) specific settings
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "javascriptreact", "typescriptreact", "css", "typescript", "javascript", "c", "cpp" },

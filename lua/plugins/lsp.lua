@@ -74,6 +74,19 @@ return {
 			-- Intelliphense setup
 			require('lspconfig').intelephense.setup{}
 
+			-- HTML setup
+			require('lspconfig').html.setup({
+				filetypes = { "html", "twig" },  -- extend to twig
+				init_options = {
+					configurationSection = { "html", "css", "javascript" },
+					embeddedLanguages = {
+						css = true,
+						javascript = true
+					},
+					provideFormatter = true
+				}
+			})
+
 
 			local lsp_defaults = require("lspconfig").util.default_config
 
