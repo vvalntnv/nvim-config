@@ -2,6 +2,7 @@ Snacks = require("snacks")
 vim.g.moonflyNormalFloat = true
 
 require("remaps")
+require("custom.line_wrapper") -- The line-wrapper command
 vim.cmd([[set termguicolors]])
 vim.cmd([[colorscheme onedark]])
 
@@ -14,8 +15,8 @@ vim.opt.scrolloff = 8
 
 vim.opt.tabstop = 4
 vim.opt.cursorline = true
-vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+-- vim.opt.softtabstop = 4
 vim.expandtab = true
 
 vim.opt.smartindent = true

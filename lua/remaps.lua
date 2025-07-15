@@ -24,20 +24,6 @@ vim.keymap.set("n", "<C-x>", [[:Neotree action=show toggle reveal<CR>]])
 vim.keymap.set("n", "<leader>b", [[:Neotree action=focus source=buffers position=float toggle<CR>]])
 vim.keymap.set("n", "<leader>gh", [[:Neotree action=focus source=git_status position=float toggle<CR>]])
 
---
--- Nvim Tree --
--- vim.keymap.set("n", "<leader>e", [[:NvimTreeToggle<CR>]], { desc = "Open netrw file explorer" })
--- vim.keymap.set("n", "<C-h>", [[:NvimTreeFocus<CR>]], { desc = "Focus on the nvim tree" })
--- vim.keymap.set("n", "<leader>tr", [[:NvimTreeRefresh<CR>]], { desc = "Focus on the nvim tree" })
--- vim.keymap.set("n", "<leader>ft", function()
--- 	local api = require("nvim-tree.api")
---
--- 	local is_focus_on_nvim_tree = api.tree.is_tree_buf()
---
--- 	if not is_focus_on_nvim_tree then
--- 		api.tree.find_file({ open = true, focus = true })
--- 	end
--- end, { desc = "Open the current file in nvim-tree (if not focused)" })
 
 -- Code Actions --
 vim.keymap.set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
@@ -54,16 +40,10 @@ end, { silent = true, noremap = true, desc = "toggle signature" })
 -- Mason
 vim.keymap.set("n", "<leader>ms", [[:Mason<CR>]], { desc = "Open Mason" })
 
--- vim.keymap.set("n", "<leader>mm", function()
--- 	local copanel = require("copilot.panel")
--- 	copanel.open({ position = "bottom", ratio = 0.4 })
--- end, { desc = "Make Mason" })
-
-
 -- Harpoon --
--- vim.keymap.set('n', "<C-a>", ':lua require("harpoon.mark").add_file()<CR>')
--- vim.keymap.set('n', "<C-l>", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
--- vim.keymap.set('n', "<S-l>", ':lua require("harpoon.ui").nav_next()<CR>')
--- vim.keymap.set('n', "<S-h>", ':lua require("harpoon.ui").nav_prev()<CR>')
+vim.keymap.set('n', "<C-b>", ':lua require("harpoon.mark").add_file()<CR>')
+vim.keymap.set('n', "<C-n>", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
+vim.keymap.set('n', "<S-l>", ':lua require("harpoon.ui").nav_next()<CR>')
+vim.keymap.set('n', "<S-h>", ':lua require("harpoon.ui").nav_prev()<CR>')
 
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)

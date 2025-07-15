@@ -64,6 +64,7 @@ return {
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
+			{ "jmbuhr/otter.nvim" }
 		},
 		init = function()
 			-- Reserve a space in the gutter
@@ -125,6 +126,10 @@ return {
 						require("lspconfig")[server_name].setup({})
 					end,
 				},
+			})
+
+			require("otter").setup({
+				-- Otter will manage buffers for injected languages
 			})
 		end,
 	},

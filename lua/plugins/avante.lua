@@ -11,13 +11,17 @@ return {
 			proxy = nil
 		},
 		provider = "claude",
-		claude = {
-			endpoint = "https://api.anthropic.com",
-			model = "claude-3-7-sonnet-20250219", -- your desired model (or use gpt-4o, etc.)
-			timeout = 30000,             -- Timeout in milliseconds, increase this for reasoning models
-			temperature = 0,
-			max_tokens = 4096,           -- Increase this to include reasoning tokens (for reasoning models)
-			--reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+		providers = {
+			claude = {
+				endpoint = "https://api.anthropic.com",
+				model = "claude-3-7-sonnet-20250219", -- your desired model (or use gpt-4o, etc.)
+				timeout = 30000,             -- Timeout in milliseconds, increase this for reasoning models
+				--reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+			},
+			extra_request_body = {
+				temperature = 0,
+				max_tokens = 4096,           -- Increase this to include reasoning tokens (for reasoning models)
+			}
 		},
 		mappings = {
 			--- @class AvanteConflictMappings
