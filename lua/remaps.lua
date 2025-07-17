@@ -47,3 +47,7 @@ vim.keymap.set('n', "<S-l>", ':lua require("harpoon.ui").nav_next()<CR>')
 vim.keymap.set('n', "<S-h>", ':lua require("harpoon.ui").nav_prev()<CR>')
 
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
+
+vim.keymap.set("n", "[c", function()
+	require("treesitter-context").go_to_context(vim.v.count1)
+end, { silent = true })
