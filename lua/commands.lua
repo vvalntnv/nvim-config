@@ -20,3 +20,10 @@ end)
 vim.keymap.set("n", "<leader>d", function()
 	neotest.diagnostic()
 end, {})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.j2", "*.jinja", "*.jinja2", "*/templates/*.html" },
+	callback = function()
+		vim.bo.filetype = "htmldjango"
+	end,
+})

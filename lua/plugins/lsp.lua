@@ -15,6 +15,12 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+			cmp.setup.filetype("html", {
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "buffer" },
+				})
+			})
 			-- local copilot = require("copilot")
 			cmp.setup({
 				sources = {
@@ -72,12 +78,17 @@ return {
 			vim.opt.signcolumn = "yes"
 		end,
 		config = function()
+			local lsp_config = require("lspconfig")
+
 			-- Intelliphense setup
-			require('lspconfig').intelephense.setup{}
+			lsp_config.intelephense.setup {}
+
+			-- SQLLs setup
+			lsp_config.sqlls.setup {}
 
 			-- HTML setup
-			require('lspconfig').html.setup({
-				filetypes = { "html", "twig" },  -- extend to twig
+			lsp_config.html.setup({
+				filetypes = { "html", "twig", "j2", "htmldjango" }, -- extend to twig
 				init_options = {
 					configurationSection = { "html", "css", "javascript" },
 					embeddedLanguages = {
@@ -88,8 +99,12 @@ return {
 				}
 			})
 
+			lsp_config.jinja_lsp.setup {
+				filetypes = { "html" }
+			}
 
-			local lsp_defaults = require("lspconfig").util.default_config
+
+			local lsp_defaults = lsp_config.util.default_config
 
 			-- Add cmp_nvim_lsp capabilities settings to lspconfig
 			-- This should be executed before you configure any language server
