@@ -11,7 +11,7 @@ return {
 				hide_during_completion = vim.g.ai_cmp,
 				keymap = {
 					accept_word = "<C-t>",
-					accept_line = "<leader>al",
+					accept_line = "<C-e>",
 					accept = "<C-y>",
 				},
 			},
