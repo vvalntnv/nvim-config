@@ -4,7 +4,7 @@ vim.g.moonflyNormalFloat = true
 require("remaps")
 require("custom.line_wrapper") -- The line-wrapper command
 vim.cmd([[set termguicolors]])
-vim.cmd([[colorscheme onedark]])
+vim.cmd([[colorscheme rose-pine]])
 
 vim.opt.number = true
 vim.opt.guicursor = ""

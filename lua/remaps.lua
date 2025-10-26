@@ -51,3 +51,7 @@ vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 vim.keymap.set("n", "[c", function()
 	require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true })
+
+-- AVANTE --
+vim.keymap.set("n", "<leader>cn", ":AvanteChatNew<CR>", { desc = "Open Avante Chat" })
+vim.keymap.set("n", "<C-/>", ":AvanteChat<CR>", { desc = "Open Avante Chat" })
