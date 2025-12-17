@@ -1,6 +1,7 @@
 Snacks = require("snacks")
 vim.g.moonflyNormalFloat = true
 
+require("commands")
 require("remaps")
 require("custom.line_wrapper") -- The line-wrapper command
 vim.cmd([[set termguicolors]])

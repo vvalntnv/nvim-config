@@ -25,7 +25,7 @@ return {
 			cmp.setup({
 				sources = {
 					{ name = "nvim_lsp" },
-					{ name = "supermaven"},
+					{ name = "supermaven" },
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-j>"] = cmp.mapping.select_next_item(),
@@ -104,6 +104,19 @@ return {
 				filetypes = { "html" }
 			}
 
+			lsp_config.rust_analyzer.setup({
+				-- capabilities = capabilities,
+				inlayHints = {
+					parameterHints = { enable = true },
+					typeHints      = { enable = true },
+				},
+				commands = {
+					ExpandMacro = {
+						-- TODO: Create this command (with a window inside of it)
+					}
+				}
+			})
+
 
 			local lsp_defaults = lsp_config.util.default_config
 
@@ -133,7 +146,7 @@ return {
 			})
 
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "rust_ls" },
+				ensure_installed = { "pyright", "rust_analyzer" },
 				automatic_installation = {},
 				handlers = {
 					-- this first function is the "default handler"

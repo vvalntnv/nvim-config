@@ -55,3 +55,6 @@ end, { silent = true })
 -- AVANTE --
 vim.keymap.set("n", "<leader>cn", ":AvanteChatNew<CR>", { desc = "Open Avante Chat" })
 vim.keymap.set("n", "<C-/>", ":AvanteChat<CR>", { desc = "Open Avante Chat" })
+
+-- Solana Seeds --
+vim.keymap.set("n", "<leader>x", [[:Seeds<CR>]], { desc = "write them seeds" })
