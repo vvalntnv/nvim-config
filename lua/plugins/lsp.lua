@@ -146,7 +146,7 @@ return {
 			})
 
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "rust_analyzer" },
+				ensure_installed = { "ruff", "rust_analyzer" },
 				automatic_installation = {},
 				handlers = {
 					-- this first function is the "default handler"

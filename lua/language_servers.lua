@@ -1,8 +1,3 @@
--- Pyright conf
-require("lspconfig").pyright.setup({
-
-})
-
 -- Lua Lang server
 require('lspconfig').lua_ls.setup {
 	settings = {

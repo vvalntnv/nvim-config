@@ -58,3 +58,10 @@ vim.keymap.set("n", "<C-/>", ":AvanteChat<CR>", { desc = "Open Avante Chat" })
 
 -- Solana Seeds --
 vim.keymap.set("n", "<leader>x", [[:Seeds<CR>]], { desc = "write them seeds" })
+
+-- Refactor --
+vim.keymap.set(
+    {"n", "x"},
+    "<leader>rr",
+    function() require('refactoring').select_refactor() end
+)
