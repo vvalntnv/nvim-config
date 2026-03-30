@@ -1,19 +1,10 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-
+	lazy = false,
+	build = ':TSUpdate',
 	config = function()
-		local treesitter = require("nvim-treesitter.configs")
-
-		treesitter.setup({
-			auto_install = true,
-
-			highlight = {
-				enable = true,
-			},
-
-			indent = {
-				enable = true
-			}
+		require("nvim-treesitter").setup({
+			install_dir = vim.fn.stdpath('data') .. '/site',
 		})
 	end,
 }

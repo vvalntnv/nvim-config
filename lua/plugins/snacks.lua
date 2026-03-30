@@ -22,6 +22,29 @@ return {
 		words = { enabled = true },
 	},
 	keys = {
+		{ "<leader>ff", function() Snacks.picker.files() end,                 desc = "Find files" },
+		{ "<leader>gg", function() Snacks.picker.git_files() end,             desc = "Git files" },
+		{ "<leader>fg", function() Snacks.picker.grep() end,                  desc = "Live grep" },
+		{ "<leader>fb", function() Snacks.picker.buffers() end,               desc = "Buffers" },
+		{ "<leader>fh", function() Snacks.picker.help() end,                  desc = "Help tags" },
+		{ "<leader>sd", function() Snacks.picker.lsp_symbols() end,           desc = "Document symbols" },
+		{ "<leader>sw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
+
+		{
+			"<leader>fw",
+			function()
+				local term = vim.fn.input("Grep > ")
+				if term == "" then
+					return
+				end
+
+				Snacks.picker.grep({
+					search = term,
+					live = false,
+				})
+			end,
+			desc = "Grep content, then filter by file",
+		},
 		-- Git --
 		{
 			"<leader>gb",
@@ -32,7 +55,7 @@ return {
 		},
 		{
 			"<leader>gB",
-			function ()
+			function()
 				Snacks.git.blame_line()
 			end,
 			desc = "Git Blame"

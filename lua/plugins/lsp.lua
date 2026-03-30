@@ -1,180 +1,278 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
-		opts = {},
+		cmd = { "Mason", "MasonInstall", "MasonUpdate" },
+		opts = {
+			ui = {
+				border = "rounded",
+			},
+		},
 	},
 
-	-- Autocompletion
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"neovim/nvim-lspconfig",
+		},
+		opts = {
+			ensure_installed = {
+				"lua_ls",
+				"basedpyright",
+				"ruff",
+				"bashls",
+				"jsonls",
+				"html",
+				"cssls",
+				"ts_ls",
+			},
+			automatic_installation = true,
+		},
+	},
+
 	{
 		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		dependencies = {
 			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
 		},
-		event = "InsertEnter",
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			cmp.setup.filetype("html", {
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "buffer" },
-				})
-			})
-			-- local copilot = require("copilot")
-			cmp.setup({
-				sources = {
-					{ name = "nvim_lsp" },
-					{ name = "supermaven" },
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-j>"] = cmp.mapping.select_next_item(),
-					["<C-k>"] = cmp.mapping.select_prev_item(),
 
-					-- I did this shi myself
+			cmp.setup({
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
+
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
+
+				mapping = cmp.mapping.preset.insert({
+					["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.abort(),
+					["<CR>"] = cmp.mapping(function(fallback)
+						fallback()
+					end, { "i", "s" }),
+
+					["<C-j>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+
+					["<C-k>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.confirm({ select = true })
-						elseif luasnip.locally_jumpable(1) then
-							luasnip.jump(1)
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
 
 					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if luasnip.locally_jumpable(-1) then
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
 							luasnip.jump(-1)
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
-
-					["<C-u>"] = cmp.mapping.scroll_docs(-4),
-					["<C-d>"] = cmp.mapping.scroll_docs(4),
 				}),
-				snippet = {
-					expand = function(args)
-						vim.snippet.expand(args.body)
-					end,
-				},
+
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "path" },
+					{ name = "buffer" },
+				}),
+			})
+
+			cmp.setup.filetype("gitcommit", {
+				sources = cmp.config.sources({
+					{ name = "buffer" },
+				}),
 			})
 		end,
 	},
 
-	-- LSP
 	{
 		"neovim/nvim-lspconfig",
-		cmd = { "LspInfo", "LspInstall", "LspStart" },
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-			{ "jmbuhr/otter.nvim" }
+			"hrsh7th/cmp-nvim-lsp",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 		},
-		init = function()
-			-- Reserve a space in the gutter
-			-- This will avoid an annoying layout shift in the screen
-			vim.opt.signcolumn = "yes"
-		end,
 		config = function()
-			local lsp_config = require("lspconfig")
+			local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-			-- Intelliphense setup
-			lsp_config.intelephense.setup {}
+			local capabilities = cmp_nvim_lsp.default_capabilities()
 
-			-- SQLLs setup
-			lsp_config.sqlls.setup {}
-
-			-- HTML setup
-			lsp_config.html.setup({
-				filetypes = { "html", "twig", "j2", "htmldjango" }, -- extend to twig
-				init_options = {
-					configurationSection = { "html", "css", "javascript" },
-					embeddedLanguages = {
-						css = true,
-						javascript = true
+			vim.diagnostic.config({
+				virtual_text = {
+					spacing = 2,
+					source = "if_many",
+					prefix = "●",
+				},
+				float = {
+					border = "rounded",
+					source = "if_many",
+				},
+				underline = true,
+				update_in_insert = false,
+				severity_sort = true,
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = "󰅚 ",
+						[vim.diagnostic.severity.WARN] = "󰀪 ",
+						[vim.diagnostic.severity.INFO] = "󰋽 ",
+						[vim.diagnostic.severity.HINT] = "󰌶 ",
 					},
-					provideFormatter = true
-				}
+				},
 			})
 
-			lsp_config.jinja_lsp.setup {
-				filetypes = { "html" }
+			local on_attach = function(client, bufnr)
+				local map = function(mode, lhs, rhs, desc)
+					vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
+				end
+
+				map("n", "gd", vim.lsp.buf.definition, "LSP definition")
+				map("n", "gD", vim.lsp.buf.declaration, "LSP declaration")
+				map("n", "gi", vim.lsp.buf.implementation, "LSP implementation")
+				map("n", "grr", vim.lsp.buf.references, "LSP references")
+				map("n", "grt", vim.lsp.buf.type_definition, "LSP type definition")
+				map("n", "K", vim.lsp.buf.hover, "LSP hover")
+				map("n", "<C-k>", vim.lsp.buf.signature_help, "LSP signature help")
+				map("n", "<leader>rn", vim.lsp.buf.rename, "LSP rename")
+				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "LSP code action")
+				map("n", "<leader>f", function()
+					vim.lsp.buf.format({ async = true })
+				end, "LSP format")
+				map("n", "<leader>e", vim.diagnostic.open_float, "Line diagnostics")
+				map("n", "<leader>q", vim.diagnostic.setloclist, "Diagnostics to loclist")
+
+				if client.name == "ruff" then
+					client.server_capabilities.hoverProvider = false
+				end
+			end
+
+			local servers = {
+				lua_ls = {
+					capabilities = capabilities,
+					on_attach = on_attach,
+					settings = {
+						Lua = {
+							runtime = {
+								version = "LuaJIT",
+							},
+							diagnostics = {
+								globals = { "vim" },
+							},
+							workspace = {
+								checkThirdParty = false,
+								library = vim.api.nvim_get_runtime_file("", true),
+							},
+							completion = {
+								callSnippet = "Replace",
+							},
+							telemetry = {
+								enable = false,
+							},
+						},
+					},
+				},
+
+				basedpyright = {
+					capabilities = capabilities,
+					on_attach = on_attach,
+					settings = {
+						basedpyright = {
+							analysis = {
+								typeCheckingMode = "basic",
+								autoImportCompletions = true,
+								diagnosticMode = "openFilesOnly",
+								inlayHints = {
+									variableTypes = true,
+									callArgumentNames = true,
+									functionReturnTypes = true,
+									genericTypes = true,
+								},
+							},
+						},
+					},
+				},
+
+				ruff = {
+					capabilities = capabilities,
+					on_attach = on_attach,
+					init_options = {
+						settings = {
+							args = {},
+						},
+					},
+				},
+
+				ts_ls = {
+					capabilities = capabilities,
+					on_attach = on_attach,
+				},
+
+				html = {
+					capabilities = capabilities,
+					on_attach = on_attach,
+				},
+
+				cssls = {
+					capabilities = capabilities,
+					on_attach = on_attach,
+				},
+
+				jsonls = {
+					capabilities = capabilities,
+					on_attach = on_attach,
+				},
+
+				bashls = {
+					capabilities = capabilities,
+					on_attach = on_attach,
+				},
 			}
 
-			lsp_config.rust_analyzer.setup({
-				-- capabilities = capabilities,
-				inlayHints = {
-					parameterHints = { enable = true },
-					typeHints      = { enable = true },
-				},
-				commands = {
-					ExpandMacro = {
-						-- TODO: Create this command (with a window inside of it)
-					}
-				}
-			})
+			for server_name, config in pairs(servers) do
+				vim.lsp.config(server_name, config)
+			end
 
+			local enabled_lsps = { "basedpyright", "ruff", "lua_ls" }
 
-			local lsp_defaults = lsp_config.util.default_config
-
-			-- Add cmp_nvim_lsp capabilities settings to lspconfig
-			-- This should be executed before you configure any language server
-			lsp_defaults.capabilities =
-				vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-			-- LspAttach is where you enable features that only work
-			-- if there is a language server active in the file
-			vim.api.nvim_create_autocmd("LspAttach", {
-				desc = "LSP actions",
-				callback = function(event)
-					local opts = { buffer = event.buf }
-
-					vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-					vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-					vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-					vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-					vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-					vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-					vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-					vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-					vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-					vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-				end,
-			})
+			for _, lsp in pairs(enabled_lsps) do
+				vim.lsp.enable(lsp)
+			end
 
 			require("mason-lspconfig").setup({
-				ensure_installed = { "ruff", "rust_analyzer" },
-				automatic_installation = {},
-				handlers = {
-					-- this first function is the "default handler"
-					-- it applies to every language server without a "custom handler"
-					function(server_name)
-						require("lspconfig")[server_name].setup({})
-					end,
-				},
-			})
-
-			require("otter").setup({
-				-- Otter will manage buffers for injected languages
+				automatic_enable = true
 			})
 		end,
-	},
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "InsertEnter",
-		opts = {
-			bind = true,
-			handler_opts = {
-				border = "rounded",
-			},
-			hint_prefix = {
-				above = "↙ ", -- when the hint is on the line above the current line
-				current = "← ", -- when the hint is on the same line
-				below = "↖ ", -- when the hint is on the line below the current line
-			},
-		},
 	},
 }
