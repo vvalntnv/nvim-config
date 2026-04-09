@@ -5,7 +5,7 @@ require("commands")
 require("remaps")
 require("custom.line_wrapper") -- The line-wrapper command
 vim.cmd([[set termguicolors]])
-vim.cmd([[colorscheme kanagawa-dragon]])
+vim.cmd([[colorscheme rose-pine-main]])
 
 vim.opt.number = true
 vim.opt.guicursor = ""

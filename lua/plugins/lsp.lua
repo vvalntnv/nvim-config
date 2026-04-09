@@ -18,6 +18,7 @@ return {
 		opts = {
 			ensure_installed = {
 				"lua_ls",
+				"pyright",
 				"basedpyright",
 				"ruff",
 				"bashls",
@@ -25,6 +26,7 @@ return {
 				"html",
 				"cssls",
 				"ts_ls",
+				"sqlls"
 			},
 			automatic_installation = true,
 		},
@@ -164,13 +166,12 @@ return {
 				map("n", "grr", vim.lsp.buf.references, "LSP references")
 				map("n", "grt", vim.lsp.buf.type_definition, "LSP type definition")
 				map("n", "K", vim.lsp.buf.hover, "LSP hover")
-				map("n", "<C-k>", vim.lsp.buf.signature_help, "LSP signature help")
+				map("n", "<C-:>", vim.lsp.buf.signature_help, "LSP signature help")
 				map("n", "<leader>rn", vim.lsp.buf.rename, "LSP rename")
 				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "LSP code action")
 				map("n", "<leader>f", function()
 					vim.lsp.buf.format({ async = true })
 				end, "LSP format")
-				map("n", "<leader>e", vim.diagnostic.open_float, "Line diagnostics")
 				map("n", "<leader>q", vim.diagnostic.setloclist, "Diagnostics to loclist")
 
 				if client.name == "ruff" then
@@ -264,7 +265,7 @@ return {
 				vim.lsp.config(server_name, config)
 			end
 
-			local enabled_lsps = { "basedpyright", "ruff", "lua_ls" }
+			local enabled_lsps = { "basedpyright", "ruff", "lua_ls", "sql" }
 
 			for _, lsp in pairs(enabled_lsps) do
 				vim.lsp.enable(lsp)

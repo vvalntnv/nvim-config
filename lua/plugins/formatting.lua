@@ -53,6 +53,14 @@ return {
 				},
 				stdin = false,
 			},
+			black = {
+				prepend_args = {
+					"--line-length", "120",
+					"--target-version", "py313",
+					"--color",
+				},
+			},
+
 		},
 	},
 	init = function()

@@ -29,6 +29,7 @@ return {
 		{ "<leader>fh", function() Snacks.picker.help() end,                  desc = "Help tags" },
 		{ "<leader>sd", function() Snacks.picker.lsp_symbols() end,           desc = "Document symbols" },
 		{ "<leader>sw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
+		{ "<leader>lg", function() Snacks.lazygit.open() end,                 desc = "Open LazyGit" },
 
 		{
 			"<leader>fw",
