@@ -61,7 +61,12 @@ vim.keymap.set("n", "<leader>x", [[:Seeds<CR>]], { desc = "write them seeds" })
 
 -- Refactor --
 vim.keymap.set(
-    {"n", "x"},
-    "<leader>rr",
-    function() require('refactoring').select_refactor() end
+	{ "n", "x" },
+	"<leader>rr",
+	function() require('refactoring').select_refactor() end
 )
+
+-- Review comments
+vim.keymap.set("n", "<leader>rc", [[:ReviewComment<CR>]], { desc = "Review some slop that the AI has created" })
+vim.keymap.set("v", "<leader>rc", [[:ReviewCommentBlock<CR>]],
+	{ desc = "Review some block slop that the AI has created" })
