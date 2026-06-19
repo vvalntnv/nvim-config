@@ -20,7 +20,7 @@ return {
 		-- Define your formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
-			python = { "isort", "black" },
+			python = { "black" },
 			json = { "jq" },
 			php = { "php_cs_fixer" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },

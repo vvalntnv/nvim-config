@@ -26,7 +26,8 @@ return {
 				"html",
 				"cssls",
 				"ts_ls",
-				"sqlls"
+				"sqlls",
+				"clangd",
 			},
 			automatic_installation = true,
 		},
@@ -238,6 +239,40 @@ return {
 				ts_ls = {
 					capabilities = capabilities,
 					on_attach = on_attach,
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+					},
+
+					settings = {
+						javascript = {
+							inlayHints = {
+								includeInlayParameterNameHints = "literals",
+								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+								includeInlayFunctionParameterTypeHints = true,
+								includeInlayVariableTypeHints = false,
+								includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+								includeInlayPropertyDeclarationTypeHints = true,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
+							},
+						},
+
+						typescript = {
+							inlayHints = {
+								includeInlayParameterNameHints = "literals",
+								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+								includeInlayFunctionParameterTypeHints = true,
+								includeInlayVariableTypeHints = false,
+								includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+								includeInlayPropertyDeclarationTypeHints = true,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
+							},
+						},
+					},
 				},
 
 				html = {
@@ -259,13 +294,17 @@ return {
 					capabilities = capabilities,
 					on_attach = on_attach,
 				},
+				clangd = {
+					capabilities = capabilities,
+					on_attach = on_attach
+				}
 			}
 
 			for server_name, config in pairs(servers) do
 				vim.lsp.config(server_name, config)
 			end
 
-			local enabled_lsps = { "basedpyright", "ruff", "lua_ls", "sql" }
+			local enabled_lsps = { "basedpyright", "ruff", "lua_ls", "sql", "ts_ls", "clangd" }
 
 			for _, lsp in pairs(enabled_lsps) do
 				vim.lsp.enable(lsp)
